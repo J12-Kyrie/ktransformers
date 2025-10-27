@@ -169,6 +169,7 @@ class KQwen2MoeAttention(BaseInjectedModule, Qwen2MoeAttention):
                 bsz_tensors: torch.Tensor,
                 page_idx: torch.Tensor,
                 page_offset: torch.Tensor,
+                attention_mask: Optional[torch.Tensor] = None,
                 ):
         q_len, _ = hidden_states.size()
 
@@ -508,6 +509,7 @@ class KSmallthinkerAttention(BaseInjectedModule, SmallthinkerAttention):
                 wrapper: flashInferAttn,
                 bsz_tensors: torch.Tensor,
                 position_ids: torch.Tensor = None,
+                attention_mask: Optional[torch.Tensor] = None,
                 ):
 
         if self.use_qk_norm:
@@ -603,6 +605,7 @@ class KGlm4MoeAttention(BaseInjectedModule, Glm4MoeAttention):
                 wrapper: flashInferAttn,
                 bsz_tensors: torch.Tensor,
                 position_ids: torch.Tensor = None,
+                attention_mask: Optional[torch.Tensor] = None,
                 ):
 
         q_len, _ = hidden_states.size()
