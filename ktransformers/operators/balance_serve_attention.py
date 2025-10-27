@@ -169,6 +169,13 @@ class KQwen2MoeAttention(BaseInjectedModule, Qwen2MoeAttention):
                 bsz_tensors: torch.Tensor,
                 page_idx: torch.Tensor,
                 page_offset: torch.Tensor,
+                attention_mask: Optional[torch.Tensor] = None,
+                past_key_value: Optional[torch.Tensor] = None,
+                output_attentions: Optional[bool] = None,
+                use_cache: Optional[bool] = None,
+                cache_position: Optional[torch.Tensor] = None,
+                position_embeddings: Optional[Tuple[torch.Tensor, torch.Tensor]] = None,
+                **kwargs,
                 ):
         q_len, _ = hidden_states.size()
 
@@ -255,6 +262,13 @@ class KQwen3MoeAttention(BaseInjectedModule, Qwen3MoeAttention):
                 bsz_tensors: torch.Tensor,
                 page_idx: torch.Tensor,
                 page_offset: torch.Tensor,
+                attention_mask: Optional[torch.Tensor] = None,
+                past_key_value: Optional[torch.Tensor] = None,
+                output_attentions: Optional[bool] = None,
+                use_cache: Optional[bool] = None,
+                cache_position: Optional[torch.Tensor] = None,
+                position_embeddings: Optional[Tuple[torch.Tensor, torch.Tensor]] = None,
+                **kwargs,
                 ):
         q_len, _ = hidden_states.size()
 
@@ -507,6 +521,13 @@ class KSmallthinkerAttention(BaseInjectedModule, SmallthinkerAttention):
                 wrapper: flashInferAttn,
                 bsz_tensors: torch.Tensor,
                 position_ids: torch.Tensor = None,
+                attention_mask: Optional[torch.Tensor] = None,
+                past_key_value: Optional[torch.Tensor] = None,
+                output_attentions: Optional[bool] = None,
+                use_cache: Optional[bool] = None,
+                cache_position: Optional[torch.Tensor] = None,
+                position_embeddings: Optional[Tuple[torch.Tensor, torch.Tensor]] = None,
+                **kwargs,
                 ):
 
         if self.use_qk_norm:
@@ -602,6 +623,13 @@ class KGlm4MoeAttention(BaseInjectedModule, Glm4MoeAttention):
                 wrapper: flashInferAttn,
                 bsz_tensors: torch.Tensor,
                 position_ids: torch.Tensor = None,
+                attention_mask: Optional[torch.Tensor] = None,
+                past_key_value: Optional[torch.Tensor] = None,
+                output_attentions: Optional[bool] = None,
+                use_cache: Optional[bool] = None,
+                cache_position: Optional[torch.Tensor] = None,
+                position_embeddings: Optional[Tuple[torch.Tensor, torch.Tensor]] = None,
+                **kwargs,
                 ):
 
         q_len, _ = hidden_states.size()
@@ -714,6 +742,12 @@ class KQwen3NextAttention(BaseInjectedModule, Qwen3NextAttention):
                 bsz_tensors: torch.Tensor,
                 position_ids: Optional[torch.Tensor] = None,
                 attention_mask: Optional[torch.Tensor] = None,
+                past_key_value: Optional[torch.Tensor] = None,
+                output_attentions: Optional[bool] = None,
+                use_cache: Optional[bool] = None,
+                cache_position: Optional[torch.Tensor] = None,
+                position_embeddings: Optional[Tuple[torch.Tensor, torch.Tensor]] = None,
+                **kwargs,
                 ):
 
         q_len, _ = hidden_states.size()
@@ -811,6 +845,13 @@ class KQwen3NextGatedDeltaNet(BaseInjectedModule, Qwen3NextGatedDeltaNet):
         recurrent_states: Optional[list[torch.Tensor]] = None,
         attention_mask: Optional[torch.Tensor] = None,
         bsz_tensors: Optional[torch.Tensor] = None,
+        past_key_value: Optional[torch.Tensor] = None,
+        output_attentions: Optional[bool] = None,
+        use_cache: Optional[bool] = None,
+        cache_position: Optional[torch.Tensor] = None,
+        position_embeddings: Optional[Tuple[torch.Tensor, torch.Tensor]] = None,
+        position_ids: Optional[torch.Tensor] = None,
+        **kwargs,
     ):
         hidden_states = apply_mask_to_padding_states(hidden_states, attention_mask)
 
